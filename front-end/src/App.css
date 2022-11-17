@@ -36,3 +36,70 @@
     transform: rotate(360deg);
   }
 }
+
+.loginPage {
+  display: flex;
+  gap: 30%;
+  background-color: bisque;
+  align-items: center;
+  justify-content: center;
+  height: 1000px;
+  border: 30px solid white;
+  border-radius: 100px;
+}
+
+.login,
+.register {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px;
+  background-color: peru;
+  border-radius: 18px;
+}
+
+.login input,
+.login button,
+.register input,
+.register button {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+}
+
+.toolbar a {
+  text-decoration: none;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  color: black;
+  background-color: mediumseagreen;
+}
+
+.auction {
+  display: flex;
+  gap: 30px;
+  padding: 70px;
+  margin: 25px;
+  border: 5px solid gray;
+  overflow: auto;
+  flex-wrap: wrap;
+  background-color: beige;
+}
+
+.auction h1 {
+  text-align: center;
+  font-size: 70px;
+}
+
+.auctionItem {
+  background-color: white;
+  border-radius: 25px;
+  padding: 15px;
+  cursor: pointer;
+}
