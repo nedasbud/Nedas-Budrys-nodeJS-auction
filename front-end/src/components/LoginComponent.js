@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const LoginComponent = ({ setLoggedIn }) => {
+const LoginComponent = ({ setLoggedIn, setCurrentUser }) => {
 
   const uRef = useRef()
   const pRef = useRef()
@@ -22,7 +22,8 @@ const LoginComponent = ({ setLoggedIn }) => {
     const res = await fetch('http://localhost:4000/login', options)
     const data = await res.json();
     console.log(data);
-    if (data.error === false) {
+    if (!data.error) {
+      setCurrentUser(data.data.username)
       setLoggedIn(true)
       nav('/auctions')
     }

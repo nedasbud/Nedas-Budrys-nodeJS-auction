@@ -18,7 +18,7 @@ module.exports = {
     const dehash = await bcrypt.compare(password, user.password)
     if (dehash) {
       req.session.username = username
-      console.log(req.session.username)
+      console.log(req.session)
       return res.send({
         error: false,
         message: 'prisijungta sekmingai',
@@ -31,12 +31,10 @@ module.exports = {
   },
   auctions: async (req, res) => {
     const { username } = req.session
-    console.log(req.session)
     if (username) {
-      console.log('all good bro')
-      res.send({ error: false, message: 'User is logged in, all good', data: null })
+      res.send({ error: false, message: 'User is logged in, all good', data: username })
+      return
     }
-    console.log('not good bro')
     res.send({ error: true, message: 'You must log in to access this content', data: null })
   }
 }

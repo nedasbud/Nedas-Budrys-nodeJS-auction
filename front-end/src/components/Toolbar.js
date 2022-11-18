@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Toolbar = () => {
-
+const Toolbar = ({ currentUser, loggedIn }) => {
 
   return (
     <div className='toolbar'>
-      <Link to={'/login'}>Go to login page</Link>
-      <Link to={'/auctions'}>Go to auctions page</Link>
+      {loggedIn && <h3>Welcome: {currentUser}</h3>}
+      <div className='toolbarLinks'>
+        <Link to={'/login'}>Go to login page</Link>
+        {loggedIn && <Link to={'/auctions'}>Go to auctions page</Link>}
+      </div>
     </div>
   )
 }

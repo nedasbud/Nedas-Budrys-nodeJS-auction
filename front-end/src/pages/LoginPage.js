@@ -2,10 +2,10 @@ import React from 'react'
 import LoginComponent from '../components/LoginComponent'
 import RegisterComponent from '../components/RegisterComponent'
 
-const LoginPage = ({ setLoggedIn }) => {
+const LoginPage = ({ setLoggedIn, setCurrentUser }) => {
   return (
     <div className='loginPage'>
-      <LoginComponent setLoggedIn={setLoggedIn} />
+      <LoginComponent setCurrentUser={setCurrentUser} setLoggedIn={setLoggedIn} />
       <RegisterComponent />
     </div>
   )
