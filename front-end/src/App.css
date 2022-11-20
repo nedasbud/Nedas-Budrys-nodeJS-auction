@@ -220,3 +220,13 @@
   padding: 25px;
   border-radius: 25px;
 }
+
+.logBox {
+  background-color: blanchedalmond;
+  width: 300px;
+  margin: 25px auto;
+  padding: 15px;
+  color: saddlebrown;
+  text-transform: uppercase;
+  border-radius: 50px;
+}

@@ -9,7 +9,7 @@ module.exports = {
     const hashed = await bcrypt.hash(password1, 10)
     const newUser = new UserSchema({ username, password: hashed })
     await newUser.save()
-    res.send({ error: false, message: null, data: 'Sekmingai uzsiregsitravote' })
+    res.send({ error: false, message: 'Sekmingai uzsiregsitravote', data: null })
   },
   login: async (req, res) => {
     const { username, password } = req.body

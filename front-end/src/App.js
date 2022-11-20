@@ -55,8 +55,8 @@ function App() {
           <Route path='/auctions/add' element={<AddItemPage loggedIn={loggedIn} socket={socket} />} />
           <Route path='/auctions/:id' element={<SingleItemPage currentUser={currentUser} auctionItems={auctionItems} loggedIn={loggedIn} socket={socket} />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </BrowserRouter >
+    </div >
   );
 }
 

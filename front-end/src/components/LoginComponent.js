@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const LoginComponent = ({ setLoggedIn, setCurrentUser }) => {
+const LoginComponent = ({ setLoggedIn, setCurrentUser, logErr, setLogErr }) => {
 
   const uRef = useRef()
   const pRef = useRef()
@@ -27,6 +27,10 @@ const LoginComponent = ({ setLoggedIn, setCurrentUser }) => {
       setLoggedIn(true)
       nav('/auctions')
     }
+    if (data.error || data.message === "Sekmingai uzsiregsitravote") {
+      setLogErr(data.message)
+    }
+
   }
 
   return (

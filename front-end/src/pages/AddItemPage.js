@@ -47,9 +47,13 @@ const AddItemPage = ({ socket, loggedIn }) => {
       {
         loggedIn &&
         <div className='addItemForm'>
+          {inp1Err && <label>(Minimum 3 symbols)</label>}
           <input ref={imgRef} type="text" placeholder='img_url' className={` ${inp1Err ? 'invalid' : ''} `} />
+          {inp2Err && <label>(Minimum 3 symbols)</label>}
           <input ref={titleRef} type="text" placeholder='title' className={` ${inp2Err ? 'invalid' : ''} `} />
+          {inp3Err && <label>(Should be a number, starting atleast from 1)</label>}
           <input ref={timeRef} type="text" placeholder='time in seconds' className={` ${inp3Err ? 'invalid' : ''} `} />
+          {inp4Err && <label>(Should be a number, starting atleast from 1)</label>}
           <input ref={priceRef} type="text" placeholder='starting price' className={` ${inp4Err ? 'invalid' : ''} `} />
           <button onClick={uploadItem} > UPLOAD </button>
         </div>

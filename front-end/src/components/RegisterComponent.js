@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 
-const RegisterComponent = () => {
+const RegisterComponent = ({ setLogErr }) => {
 
   const uRef = useRef();
   const p1Ref = useRef();
@@ -22,6 +22,7 @@ const RegisterComponent = () => {
     const res = await fetch('http://localhost:4000/register', options)
     const data = await res.json();
     console.log(data);
+    setLogErr(data.message)
   }
 
   return (

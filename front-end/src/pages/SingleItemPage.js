@@ -9,6 +9,7 @@ const SingleItemPage = ({ currentUser, socket, auctionItems }) => {
   const [time, setTime] = useState(1)
   const [price, setPrice] = useState(-1)
   const [bets, setBets] = useState([])
+  const [err, setErr] = useState('')
   useEffect(() => {
     socket.emit('getOne', id)
   }, [socket, id])
@@ -33,14 +34,16 @@ const SingleItemPage = ({ currentUser, socket, auctionItems }) => {
 
   const betRef = useRef()
   const placeBet = () => {
-    if (Number(betRef.current.value) <= price) return console.log('Your bet must be more than the previous bet')
+    if (Number(betRef.current.value) <= price) return setErr('Your bet must be more than the current price')
     socket.emit('placeBet', { bet: Number(betRef.current.value), id: id, user: currentUser })
+    setErr('')
   }
 
   return (
     <div className='singlePage'>
       {comp && <AuctionComponentSingle item={comp}></AuctionComponentSingle>}
       <div className='otherSide'>
+        {err !== '' && <h2 style={{ color: 'orange' }}>{err}</h2>}
         <h2>Time left: {time} </h2>
         <h2>Current Price: {price}</h2>
         <h2>Current Bids: {bets.length}</h2>
