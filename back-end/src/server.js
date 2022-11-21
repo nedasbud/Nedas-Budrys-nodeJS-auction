@@ -42,7 +42,7 @@ app.set('socketio', io)
 
 // Keli itemai kad nebutu tuscia paleidus
 
-let items = [
+const items = [
   {
     img: 'https://oldschool.runescape.wiki/images/thumb/Rune_scimitar_detail.png/130px-Rune_scimitar_detail.png?c8823',
     title: 'Rune Scimitar',
@@ -90,14 +90,15 @@ let items = [
 // Constantly sukasi aukcionas
 
 const finishAuction = (i) => {
-  const itemsCopy = items.filter((item, idx) => idx !== i)
-  items = itemsCopy
+  items[i].time = 'Auction has ended'
 }
 
 setInterval(() => {
   items.forEach((item, i) => {
-    item.time--
-    if (item.time === 0 || item.time < 0) finishAuction(i)
+    if (!isNaN(item.time)) {
+      item.time--
+      if (item.time === 0 || item.time < 0) finishAuction(i)
+    }
   })
 }, 1000)
 
@@ -139,7 +140,6 @@ io.on('connect', socket => {
       bids: []
     }
     items.push(newItem)
-    console.log(newItem)
     socket.emit('getAuctions', items)
   })
 
@@ -149,10 +149,7 @@ io.on('connect', socket => {
 
   socket.on('placeBet', data => {
     const { bet, id, user } = data
-    console.log(data)
     items[id].price = bet
     items[id].bids.push({ bet, user })
   })
 })
-
-module.exports = { items }

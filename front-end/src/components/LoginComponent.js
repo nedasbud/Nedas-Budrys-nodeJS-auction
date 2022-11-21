@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const LoginComponent = ({ setLoggedIn, setCurrentUser, logErr, setLogErr }) => {
+const LoginComponent = ({ setLoggedIn, setCurrentUser, setLogErr }) => {
 
   const uRef = useRef()
   const pRef = useRef()

@@ -18,7 +18,6 @@ module.exports = {
     const dehash = await bcrypt.compare(password, user.password)
     if (dehash) {
       req.session.username = username
-      console.log(req.session)
       return res.send({
         error: false,
         message: 'prisijungta sekmingai',
